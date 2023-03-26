@@ -5,46 +5,38 @@
     async function drawLineColors() {
         var data = new google.visualization.DataTable();
         const url = "http://139.59.140.143:82/?chart=true"
-        data.addColumn('number', 'Time');
+        data.addColumn('datetime', 'Time');
         data.addColumn('number', 'QBit-USD');
         let response
         let resdata
         let dataSerie
         var options
         var chart
-        while (true) {
-            response = await fetch(url, {
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': 'https://obi23lipnik.github.io',
-                },
-                credentials: 'same-origin',
-                referrerPolicy: 'no-referrer',
-            });
-            resdata = await response.json()
-            dataSeries = []
-            for (const pricePoint of resdata.xdata) {
-                const priceDate = new Date(pricePoint[0])
-                dataSeries.push([priceDate, pricePoint[1]])
-            }
-            data.addRows(dataSeries);
-    
-            var options = {
-                hAxis: {
-                title: 'Time'
-                },
-                vAxis: {
-                title: 'Price'
-                },
-                colors: ['#a52714'],
-                height: 800,
-            };
-    
-            chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
-            await new Promise(r => setTimeout(r, 65000));
-        }
+        response = await fetch(url, {
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://obi23lipnik.github.io',
+            },
+            credentials: 'same-origin',
+            referrerPolicy: 'no-referrer',
+        });
+        resdata = await response.json()
+        data.addRows(resdata);
+
+        var options = {
+            hAxis: {
+            title: 'Time'
+            },
+            vAxis: {
+            title: 'Price'
+            },
+            colors: ['#a52714'],
+            height: 800,
+        };
+
+        chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
     }
 </script>
 <div id="chart_div"></div>
