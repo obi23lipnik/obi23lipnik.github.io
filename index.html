@@ -23,12 +23,12 @@
                 referrerPolicy: 'no-referrer',
             });
             resdata = await response.json()
-            dataSeries = []
+            /**dataSeries = []
             for (const pricePoint of resdata.xdata) {
                 const priceDate = new Date(pricePoint[0])
                 dataSeries.push([priceDate, pricePoint[1]])
-            }
-            data.addRows(dataSeries);
+            }*/
+            data.addRows(resdata.xdata);
     
             var options = {
                 hAxis: {
