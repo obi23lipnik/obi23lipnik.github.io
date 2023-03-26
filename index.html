@@ -11,9 +11,12 @@
         data.addColumn('number', 'Cats');
         fetch(url, {
             mode: 'no-cors',
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '139.59.140.143:82',
+            },
             credentials: 'same-origin',
-            referrerPolicy: 'no-referrer'
+            referrerPolicy: 'no-referrer',
         }).then((response) => response.json())
           .then((data) => console.log(data));
         data.addRows([
