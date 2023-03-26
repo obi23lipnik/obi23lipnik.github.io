@@ -26,10 +26,10 @@
         data.addColumn('number', 'Cats');
         
         let response = await fetch(url, {
-            mode: 'cors',
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '139.59.140.143:82',
+                'Access-Control-Allow-Origin': 'https://obi23lipnik.github.io',
             },
             credentials: 'same-origin',
             referrerPolicy: 'no-referrer',
