@@ -34,8 +34,8 @@
             credentials: 'same-origin',
             referrerPolicy: 'no-referrer',
         });
-        let data = await response.text()
-        console.log(data)
+        let resdata = await response.text()
+        console.log(resdata)
         console.log(response)
         data.addRows([
             [0, 0, 0],    [1, 10, 5],   [2, 23, 15],  [3, 17, 9],   [4, 18, 10],  [5, 9, 5],
