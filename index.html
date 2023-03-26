@@ -8,7 +8,7 @@
         data.addColumn('number', 'X');
         data.addColumn('number', 'Dogs');
         data.addColumn('number', 'Cats');
-        fetch("http://139.59.140.143:82/")
+        fetch("http://139.59.140.143:82/", {mode: 'cors'})
             .then((response) => response.json())
             .then((data) => console.log(data));
         data.addRows([
