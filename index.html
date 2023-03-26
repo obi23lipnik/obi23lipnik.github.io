@@ -22,8 +22,7 @@
         var data = new google.visualization.DataTable();
         const url = "http://139.59.140.143:82/?chart=true"
         data.addColumn('number', 'X');
-        data.addColumn('number', 'Dogs');
-        data.addColumn('number', 'Cats');
+        data.addColumn('number', 'QBit-USD');
         
         let response = await fetch(url, {
             mode: 'cors',
