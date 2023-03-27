@@ -37,6 +37,12 @@
             },
             colors: ['#a52714'],
             height: 800,
+            explorer: { 
+                actions: ['dragToZoom', 'rightClickToReset'],
+                axis: 'horizontal',
+                keepInBounds: true,
+                maxZoomIn: 4.0,
+            },
         };
 
         chart = new google.visualization.LineChart(document.getElementById('chart_div'));
