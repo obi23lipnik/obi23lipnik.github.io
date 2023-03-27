@@ -9,7 +9,7 @@
         data.addColumn('number', 'QBit-USD');
         let response
         let resdata
-        let dataSerie
+        let dataSeries
         var options
         var chart
         response = await fetch(url, {
@@ -22,6 +22,10 @@
             referrerPolicy: 'no-referrer',
         });
         resdata = await response.json()
+        for (const dataEntry of resdata) {
+            const dateObj = new Date(dataEntry[0])
+            dataSeries.push([dateObj, dataEntry[1]])
+        }
         data.addRows(resdata);
 
         var options = {
