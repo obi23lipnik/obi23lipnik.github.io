@@ -24,8 +24,6 @@
         resdata = await response.json()
         for (const dataEntry of resdata) {
             const dateObj = new Date(dataEntry[0])
-            console.log(dateObj)
-            console.log(typeof dateObj)
             dataSeries.push([dateObj, dataEntry[1]])
         }
         data.addRows(dataSeries);
