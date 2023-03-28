@@ -28,7 +28,7 @@
         resdata = await response.json()
         for (const dataEntry of resdata) {
             const localTimeOffset = new Date().getTimezoneOffset();
-            const dateObj = new Date(dataEntry[0]);
+            let dateObj = new Date(dataEntry[0]);
             dateObj = dateObj.addHours(localTimeOffset);
             dataSeries.push([dateObj, dataEntry[1]])
         }
