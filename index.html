@@ -24,8 +24,6 @@
         resdata = await response.json()
         const localTimeOffset = new Date().getTimezoneOffset();
         for (const dataEntry of resdata.values) {
-            console.log(new Date());
-            console.log(localTimeOffset);
             let dateObj = new Date(dataEntry[0]);
             dateObj = dateObj.addHours((localTimeOffset/60) * (-1));
             dataSeries.push([dateObj, parseInt(dataEntry[1])])
@@ -66,4 +64,9 @@
         chart.draw(data, options);
     }
 </script>
-<div id="chart_div"></div>
+<head>
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div id="chart_div"></div>
+</body>
