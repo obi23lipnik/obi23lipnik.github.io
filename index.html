@@ -17,13 +17,9 @@
         var options
         var chart
         response = await fetch(url, {
-            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://obi23lipnik.github.io',
             },
-            credentials: 'same-origin',
-            referrerPolicy: 'no-referrer',
         });
         resdata = await response.json()
         const localTimeOffset = new Date().getTimezoneOffset();
