@@ -26,8 +26,8 @@
             referrerPolicy: 'no-referrer',
         });
         resdata = await response.json()
+        const localTimeOffset = new Date().getTimezoneOffset();
         for (const dataEntry of resdata) {
-            const localTimeOffset = new Date().getTimezoneOffset();
             console.log(new Date());
             console.log(localTimeOffset);
             let dateObj = new Date(dataEntry[0]);
