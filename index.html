@@ -31,7 +31,7 @@
             console.log(new Date());
             console.log(localTimeOffset);
             let dateObj = new Date(dataEntry[0]);
-            dateObj = dateObj.addHours(localTimeOffset);
+            dateObj = dateObj.addHours((localTimeOffset/60) * (-1));
             dataSeries.push([dateObj, dataEntry[1]])
         }
         data.addRows(dataSeries);
