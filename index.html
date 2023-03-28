@@ -29,7 +29,7 @@
         for (const dataEntry of resdata) {
             const localTimeOffset = new Date().getTimezoneOffset();
             const dateObj = new Date(dataEntry[0]);
-            dateObj.addHours(localTimeOffset);
+            dateObj = dateObj.addHours(localTimeOffset);
             dataSeries.push([dateObj, dataEntry[1]])
         }
         data.addRows(dataSeries);
