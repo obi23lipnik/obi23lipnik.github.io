@@ -8,7 +8,7 @@
     google.charts.setOnLoadCallback(drawLineColors);
     async function drawLineColors() {
         var data = new google.visualization.DataTable();
-        const url = "http://139.59.140.143:82/?chart=true"
+        const url = "https://sheets.googleapis.com/v4/spreadsheets/1EMnRyOEe1SVgHqKtKjWnJKMqUiB21BTz7zsCwsIsyiw/values/Sheet1?alt=json&key=AIzaSyC54SxOXnA_iazYNFVP-qYqaZ7Ccekuq1g"
         data.addColumn('datetime', 'Time');
         data.addColumn('number', 'QBit-USD');
         let response
@@ -27,12 +27,12 @@
         });
         resdata = await response.json()
         const localTimeOffset = new Date().getTimezoneOffset();
-        for (const dataEntry of resdata) {
+        for (const dataEntry of resdata.values) {
             console.log(new Date());
             console.log(localTimeOffset);
             let dateObj = new Date(dataEntry[0]);
             dateObj = dateObj.addHours((localTimeOffset/60) * (-1));
-            dataSeries.push([dateObj, dataEntry[1]])
+            dataSeries.push([dateObj, parseInt(dataEntry[1])])
         }
         data.addRows(dataSeries);
         var dateFormat = new google.visualization.DateFormat({formatType: 'long', timeZone: (localTimeOffset/60) * (-1)});
