@@ -28,12 +28,14 @@
         resdata = await response.json()
         for (const dataEntry of resdata) {
             const localTimeOffset = new Date().getTimezoneOffset();
+            console.log(new Date());
+            console.log(localTimeOffset);
             let dateObj = new Date(dataEntry[0]);
             dateObj = dateObj.addHours(localTimeOffset);
             dataSeries.push([dateObj, dataEntry[1]])
         }
         data.addRows(dataSeries);
-        var dateFormat = new google.visualization.DateFormat({formatType: 'long', timeZone: 2});
+        var dateFormat = new google.visualization.DateFormat({formatType: 'long', timeZone: localTimeOffset});
         dateFormat.format(data, 0)
         var xTicks = [];
         for (var i = 0; i < data.getNumberOfRows(); i++) {
