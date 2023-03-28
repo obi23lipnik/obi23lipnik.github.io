@@ -1,5 +1,9 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
+    Date.prototype.addHours = function(h) {
+        this.setTime(this.getTime() + (h*60*60*1000));
+        return this;
+    }
     google.charts.load('current', {packages: ['corechart', 'line']});
     google.charts.setOnLoadCallback(drawLineColors);
     async function drawLineColors() {
@@ -23,7 +27,9 @@
         });
         resdata = await response.json()
         for (const dataEntry of resdata) {
-            const dateObj = new Date(dataEntry[0])
+            const localTimeOffset = new Date().getTimezoneOffset();
+            const dateObj = new Date(dataEntry[0]);
+            dateObj.addHours(localTimeOffset);
             dataSeries.push([dateObj, dataEntry[1]])
         }
         data.addRows(dataSeries);
