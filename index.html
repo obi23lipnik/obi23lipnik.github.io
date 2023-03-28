@@ -35,7 +35,7 @@
             dataSeries.push([dateObj, dataEntry[1]])
         }
         data.addRows(dataSeries);
-        var dateFormat = new google.visualization.DateFormat({formatType: 'long', timeZone: localTimeOffset});
+        var dateFormat = new google.visualization.DateFormat({formatType: 'long', timeZone: (localTimeOffset/60) * (-1)});
         dateFormat.format(data, 0)
         var xTicks = [];
         for (var i = 0; i < data.getNumberOfRows(); i++) {
