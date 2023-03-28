@@ -1,5 +1,11 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
+    function convertDateToAnotherTimeZone(date, timezone) {
+        const dateString = date.toLocaleString('en-US', {
+          timeZone: timezone
+        });
+        return new Date(dateString);
+    }
     google.charts.load('current', {packages: ['corechart', 'line']});
     google.charts.setOnLoadCallback(drawLineColors);
     async function drawLineColors() {
@@ -23,8 +29,9 @@
         });
         resdata = await response.json()
         for (const dataEntry of resdata) {
-            const dateObj = new Date(dataEntry[0])
-            dataSeries.push([dateObj, dataEntry[1]])
+            const dateObjUTC = new Date(dataEntry[0])
+            const dateObjBER = convertDateToAnotherTimeZone(dateObjUTC, 'Europe/Berlin');
+            dataSeries.push([dateObjBER, dataEntry[1]])
         }
         data.addRows(dataSeries);
 
